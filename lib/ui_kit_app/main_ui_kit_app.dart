@@ -14,7 +14,7 @@ class UiKitAppHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('UI KIT APP'),),
+      appBar: AppBar(title: Text('Ui Kit App'),),
       body: Container(),
     );
   }
