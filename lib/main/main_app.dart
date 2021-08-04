@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_collection/nike_shoes_store_app/features/product/screens/nike_shoes_store_home_screen.dart';
 import 'package:flutter_ui_collection/ui_kit_app/main_ui_kit_app.dart';
 
 class MyApp extends StatelessWidget {
@@ -32,6 +33,10 @@ class MyHome extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => goProject(context, UiKitAppHome()),
                 child: Text('Ui Kit App'),
+              ),
+              ElevatedButton(
+                onPressed: () => goProject(context, NikeShoesStoreHomeScreen()),
+                child: Text('Nike Shoes Store App'),
               ),
             ],
           ),
