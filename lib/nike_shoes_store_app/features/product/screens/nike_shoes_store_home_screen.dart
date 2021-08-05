@@ -13,7 +13,9 @@ class NikeShoesStoreHomeScreen extends StatelessWidget {
         pageBuilder: (context, animation, secondaryAnimation) {
           return FadeTransition(
             opacity: animation,
-            child: NikeShoesStoreDetailScreen(),
+            child: NikeShoesStoreDetailScreen(
+              nikeShoes: shoesItem,
+            ),
           );
         },
       ),
@@ -42,7 +44,7 @@ class NikeShoesStoreHomeScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       padding: const EdgeInsets.only(bottom: 20.0),
-                      itemCount: 3,
+                      itemCount: shoes.length,
                       itemBuilder: (context, index) {
                         final NikeShoes nikeShoes = shoes[index];
                         return NikeShoesListItem(
@@ -94,25 +96,38 @@ class NikeShoesListItem extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: Container(
+        child: SizedBox(
           height: itemHeight,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: Color(nikeShoes.color),
-          ),
           child: Stack(
             fit: StackFit.expand,
             children: [
+              Positioned.fill(
+                child: Hero(
+                  tag: 'background_${nikeShoes.modelNumber}',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Color(nikeShoes.color),
+                    ),
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.topCenter,
-                child: SizedBox(
-                  height: itemHeight * 0.65,
-                  child: FittedBox(
-                    child: Text(
-                      nikeShoes.modelNumber.toString(),
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(0.05),
-                        fontWeight: FontWeight.bold,
+                child: Hero(
+                  tag: 'modelNumber_${nikeShoes.modelNumber}',
+                  child: Material(
+                    color: Colors.transparent,
+                    child: SizedBox(
+                      height: itemHeight * 0.65,
+                      child: FittedBox(
+                        child: Text(
+                          nikeShoes.modelNumber.toString(),
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.05),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -122,9 +137,12 @@ class NikeShoesListItem extends StatelessWidget {
                 top: 20.0,
                 left: 100.0,
                 height: itemHeight * 0.7,
-                child: Image.asset(
-                  nikeShoes.images.first,
-                  fit: BoxFit.contain,
+                child: Hero(
+                  tag: 'image_${nikeShoes.modelNumber}',
+                  child: Image.asset(
+                    nikeShoes.images.first,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Positioned(
