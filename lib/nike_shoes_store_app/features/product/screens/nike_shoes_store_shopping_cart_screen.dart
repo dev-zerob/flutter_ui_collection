@@ -185,7 +185,7 @@ class _NikeShoesStoreShoppingCartScreenState extends State<NikeShoesStoreShoppin
                   children: <Widget>[
                     if (_animationMovementIn.value != 1)
                       Positioned(
-                        top: size.height * 0.4 + (_animationMovementIn.value * size.height * 0.47),
+                        top: size.height * 0.4 + (_animationMovementIn.value * size.height * 0.45),
                         left: size.width / 2.0 - panelSize.width / 2.0,
                         width: panelSize.width,
                         child: _buildPanel(context),
